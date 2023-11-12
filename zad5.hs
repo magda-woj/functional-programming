@@ -1,2 +1,0 @@
-wielkieLitery :: [String] -> [String]
-wielkieLitery 
