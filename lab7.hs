@@ -1,12 +1,18 @@
-import System.Win32 (COORD(yPos), xBUTTON1)
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# HLINT ignore "Avoid lambda using `infix`" #-}
+{-# HLINT ignore "Eta reduce" #-}
+{-# HLINT ignore "Use section" #-}
+{-# HLINT ignore "Redundant bracket" #-}
+
 -- zad1 Napisać bezpunktowo funkcje równoważne (w sensie zwracanych wartości) poniższym:
 -- f list = filter (\x->x>5)) list
 -- g list = map (\x->x/5) list
 -- Przedstawić kolejne kroki przekształceń od postaci punktowej do
 -- bezpunktowej.
 
+
 f :: (Ord a, Num a) => [a] -> [a]
-f list = filter (\x->x>5) list
+f = filter (\x->x>5)
 
 fBezPkt :: (Ord a, Num a) => [a] -> [a]
 fBezPkt = filter (\x->x>5)
@@ -50,6 +56,17 @@ d :: [Double] -> Double -> [Double]
 -- d list = flip (.) (flip (/)) (flip map list)
 d = (flip (.) (flip (/))).(flip map)
 
+-- zad5 Napisać bezpunktowo funkcję równoważną (w sensie zwracanych wartości) poniższej:
+-- wiekszeOd lista a = [x | x<-lista,x>a]
+-- Przedstawić kolejne kroki przekształceń od postaci punktowej do bezpunktowej.
 
-
+wiekszeOd :: Ord a => [a] -> a -> [a]
+-- wiekszeOd lista a = [x | x<-lista, x>a]
+-- wiekszeOd lista a = filter (\x -> x>a) lista
+-- wiekszeOd lista a = flip filter lista (\x -> x>a)
+-- wiekszeOd lista a = flip filter lista ((<) a)
+-- wiekszeOd lista = (flip filter lista).((<))
+-- wiekszeOd lista = (.)(flip filter lista) (<)
+-- wiekszeOd lista = flip (.) (<) (flip filter lista) 
+wiekszeOd = (flip (.) (<)).(flip filter)
 

@@ -1,3 +1,4 @@
+import System.Win32 (xBUTTON1)
 -- zad1 Napisać funkcję dwuargumentową, która przyjmuje liczby x, y oraz zwraca wartość (x^2+2xy)/y^2
 -- Wykorzystując napisaną definicję funkcji oraz ustalenie wartości jednym z argumentów zdefiniować funkcję przyjmującą liczbę x oraz zwracającą (25 + 10y)/y^2 
 zad1_1 :: Double -> Double -> Double
@@ -28,10 +29,13 @@ zad2 = sumaWartosci razyDwa razyTrzy
 -- ocena 5.0 = "brawo!"
 -- ocena x = "wpisane masz " ++ show x
 -- stosując dozory (guards) zamiast dopasowania do wzorca.
+
+
 ocena :: Double -> String
 ocena x | x==2.0 = "niezaliczone"
         | x==5.0 = "brawo!"
         | otherwise = "wpisane masz " ++ show x
+
 
 -- zad4 Napisać funkcję obliczającą s(n, k) - liczbę Stirlinga I rodzaju.
 
