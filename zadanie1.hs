@@ -1,14 +1,34 @@
-dodajCykl :: a -> [[a]] -> [[a]]
-dodajCykl e cykle = (e : (init (head cykle))) : cykle
+jestSamogloska :: Char -> Int
+jestSamogloska 'a' = 1
+jestSamogloska 'A' = 1
+jestSamogloska 'e' = 1
+jestSamogloska 'E' = 1
+jestSamogloska 'i' = 1
+jestSamogloska 'I' = 1
+jestSamogloska 'o' = 1
+jestSamogloska 'O' = 1
+jestSamogloska 'u' = 1
+jestSamogloska 'U' = 1
+jestSamogloska 'y' = 1
+jestSamogloska 'Y' = 1
+jestSamogloska _ = 0
 
-cykl :: [a] -> [[a]]
-cykl xs = foldr dodajCykl [xs] (tail xs)
+parzyscieSamoglosek :: String -> Bool
+parzyscieSamoglosek s = even (sum (map jestSamogloska s))
 
--- wydluz :: [String] -> String -> [String]
--- wysluz lista s = 
+odpowiadaj :: String -> IO()
+odpowiadaj s = if parzyscieSamoglosek s
+    then do
+            putStrLn "tak!"
+    else do
 
-dobreCiagi :: Int -> [String]
-dobreCiagi 0 = []
-dobreCiagi 1 = ["abb", "abc", "acb", "acc", "bab", "bac", "cab", "cac", "bba", "bca", "cba", "cca"]
-dobreCiagi n = []
+            putStrLn "nie."
 
+main :: IO ()
+main = do
+            putStrLn "Zadaj pytanie:"
+            s <- getLine
+            odpowiadaj s
+            -- odkomentowac ponizsze linie zeby moc odpalic w zwyklej konsoli i zeby program nie zamykal sie natychmiast po odpowiedzi na pytanie (bo czeka jeszcze na m)
+            -- m <- getLine 
+            -- return ()

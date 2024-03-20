@@ -1,0 +1,22 @@
+\begin{block}{Lemma 1.}
+    Let \(G = (V, E)\) be a graph and $X \subseteq V (G)$ be a set of vertices with $\bind(X) = \frac{1}{k}$ for some integer 
+    $k \geq 1$. Then there exists a function $f : X \rightarrow N(X)$ with the following properties:
+
+    \begin{itemize}
+    \item for all $x \in X, f(x)$ is an adjacent vertex of $x$.
+    \item for all $y \in N(X), |\{x : f (x) = y\}| \leq k$.
+    \end{itemize}
+\end{block}
+
+\begin{frame}
+\frametitle{Lemma 2.}
+
+\begin{block}{Lemma 2.}
+    For $k \geq 3$
+    \begin{itemize}
+        \item Let $T$ be a tree of order $n$ with maximum degree $k$. Then $\nu(T) \geq \frac{n-1}{k}.
+        \item Let $G$ be a connected graph of order $n$ that has exactly one cycle and its maximum degree is $k$.
+        We have $\nu(G)$ \geq \frac{n}{k}. Here, $G$ may have parallel edges, in which case, we count the only pair of parallel edges as a cycle.
+    \end{itemize}
+\end{block}
+\end{frame}

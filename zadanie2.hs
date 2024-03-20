@@ -1,10 +1,17 @@
-import Language.Haskell.TH.Syntax (counter)
-f :: Integer -> Integer
-f n = if even n then n `div` 2 else 3*n + 1
+silnia :: Int -> Double
+-- silnia n = foldl (*) 1 (take n [1..])
+-- silnia n = (foldl (*) 1) (flip take [1..] n)
+-- silnia n = (foldl (*) 1) ((flip take [1..]) n)
+silnia = foldl (*) 1.flip take [1..]
 
-collatzForOne :: Integer -> Integer -> Integer
-collatzForOne counter 1 = counter
-collatzForOne counter n = collatzForOne (counter + 1) (f n) 
+jedenPrzezSilnia :: Int -> Double
+-- jedenPrzezSilnia n = 1 / (silnia n)
+-- jedenPrzezSilnia n = (/) 1 (silnia n)
+jedenPrzezSilnia = (/) 1.silnia
 
-collatz :: Integer -> [Integer]
-collatz n = map (collatzForOne 0) [1..n]
+tablicaEulera :: Int -> [Double]
+-- tablicaEulera n = map jedenPrzezSilnia (flip take [1..] n)
+tablicaEulera = (map jedenPrzezSilnia).(flip take [1..])
+
+liczbaEulera :: Int -> Double
+liczbaEulera = (foldl (+) 1).(tablicaEulera)
